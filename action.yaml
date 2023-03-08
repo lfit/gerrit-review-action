@@ -63,7 +63,7 @@ runs:
         # yamllint enable
 
     - name: "Failure vote"
-      if: "${{ inputs.vote-type == 'job_status' && job_status == 'failure' }}"
+      if: "${{ inputs.vote-type == 'job_status' && job.status == 'failure' }}"
       uses: appleboy/ssh-action@v0.1.8
       with:
         host: "${{ inputs.host }}"
@@ -77,7 +77,7 @@ runs:
         # yamllint enable
 
     - name: "Cancelled vote"
-      if: "${{ inputs.vote-type == 'job_status' && job_status == 'cancelled' }}"
+      if: "${{ inputs.vote-type == 'job_status' && job.status == 'cancelled' }}"
       uses: appleboy/ssh-action@v0.1.8
       with:
         host: "${{ inputs.host }}"
