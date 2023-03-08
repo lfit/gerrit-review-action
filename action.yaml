@@ -27,7 +27,7 @@ inputs:
     required: false
     default: "1"
   vote-type:
-    description: "The type of vote to perform: clear, job_status, default: clear"
+    description: "The type of vote to perform: clear, success, failure, cancelled"
     required: false
     default: "clear"
 
@@ -49,7 +49,7 @@ runs:
         # yamllint enable
 
     - name: "Success vote"
-      if: "${{ inputs.vote-type == 'job_status' && job.status == 'success' }}"
+      if: "${{ inputs.vote-type == 'success' }}"
       uses: appleboy/ssh-action@v0.1.8
       with:
         host: "${{ inputs.host }}"
@@ -63,7 +63,7 @@ runs:
         # yamllint enable
 
     - name: "Failure vote"
-      if: "${{ inputs.vote-type == 'job_status' && job.status == 'failure' }}"
+      if: "${{ inputs.vote-type == 'failure' }}"
       uses: appleboy/ssh-action@v0.1.8
       with:
         host: "${{ inputs.host }}"
@@ -77,7 +77,7 @@ runs:
         # yamllint enable
 
     - name: "Cancelled vote"
-      if: "${{ inputs.vote-type == 'job_status' && job.status == 'cancelled' }}"
+      if: "${{ inputs.vote-type == 'cancelled' }}"
       uses: appleboy/ssh-action@v0.1.8
       with:
         host: "${{ inputs.host }}"
