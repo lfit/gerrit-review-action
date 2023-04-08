@@ -27,7 +27,7 @@ repos:
           - --branch=production
 
   - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.19.0
+    rev: v0.19.1
     hooks:
       - id: gitlint
 
@@ -38,7 +38,7 @@ repos:
         stages: [commit]
 
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.29.0
+    rev: v1.30.0
     hooks:
       - id: yamllint
         types: [yaml]
