@@ -53,6 +53,7 @@ runs:
 
     - name: "Clear vote"
       if: "${{ inputs.vote-type == 'clear' }}"
+      shell: bash
       run: |-
         ssh ${{ inputs.host }} gerrit review ${{ inputs.gerrit-change-number }},${{ inputs.gerrit-patchset-number }} \
           --message 'STARTED: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} ' \
@@ -60,6 +61,7 @@ runs:
 
     - name: "Success vote"
       if: "${{ inputs.vote-type == 'success' }}"
+      shell: bash
       run: |-
         ssh ${{ inputs.host }} gerrit review ${{ inputs.gerrit-change-number }},${{ inputs.gerrit-patchset-number }} \
           --message 'SUCCESS: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} ' \
@@ -67,6 +69,7 @@ runs:
 
     - name: "Failure vote"
       if: "${{ inputs.vote-type == 'failure' }}"
+      shell: bash
       run: |-
         ssh ${{ inputs.host }} gerrit review ${{ inputs.gerrit-change-number }},${{ inputs.gerrit-patchset-number }} \
           --message 'FAILURE: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} ' \
@@ -74,6 +77,7 @@ runs:
 
     - name: "Cancelled vote"
       if: "${{ inputs.vote-type == 'cancelled' }}"
+      shell: bash
       run: |-
         ssh ${{ inputs.host }} gerrit review ${{ inputs.gerrit-change-number }},${{ inputs.gerrit-patchset-number }} \
           --message 'CANCELLED: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} ' \
