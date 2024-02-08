@@ -43,7 +43,7 @@ runs:
   using: "composite"
   steps:
     - name: Install SSH Key
-      uses: shimataro/ssh-key-action@v2.5.1
+      uses: shimataro/ssh-key-action@38b53cb2f445ea2e0eb8872407e366677c41dbc6 # v2.6.1
       with:
         key: ${{ inputs.key }}
         name: ${{ inputs.key_name }}
